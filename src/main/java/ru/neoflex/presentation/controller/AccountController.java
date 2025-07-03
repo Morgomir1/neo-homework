@@ -1,7 +1,6 @@
 package ru.neoflex.presentation.controller;
 
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +16,17 @@ import ru.neoflex.presentation.service.AccountService;
 @Validated
 @RestController
 @RequestMapping("/v1/user")
-@RequiredArgsConstructor
 public class AccountController {
 
     private final AccountService accountService;
 
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
     @PostMapping
     public AccountDto createAccount(@RequestBody @Valid CreateAccountRequest createAccountRequest) {
+        System.out.println("Received request: " + createAccountRequest);
         return accountService.createAccount(createAccountRequest);
     }
 

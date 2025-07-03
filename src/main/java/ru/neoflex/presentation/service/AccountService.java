@@ -1,7 +1,6 @@
 package ru.neoflex.presentation.service;
 
 import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.neoflex.presentation.dto.AccountDto;
 import ru.neoflex.presentation.dto.CreateAccountRequest;
@@ -10,11 +9,15 @@ import ru.neoflex.presentation.model.Account;
 import ru.neoflex.presentation.repository.AccountRepository;
 
 @Service
-@RequiredArgsConstructor
 public class AccountService {
 
     private final AccountRepository accountRepository;
     private final AccountMapper accountMapper;
+
+    public AccountService(AccountRepository accountRepository, AccountMapper accountMapper) {
+        this.accountRepository = accountRepository;
+        this.accountMapper = accountMapper;
+    }
 
     public AccountDto createAccount(CreateAccountRequest createAccountRequest) {
         Account newAccount = accountMapper.toEntity(createAccountRequest);

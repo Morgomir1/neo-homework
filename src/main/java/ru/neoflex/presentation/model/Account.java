@@ -5,15 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "account")
 public class Account {
@@ -23,4 +15,51 @@ public class Account {
     private String name;
     private String surname;
     private int age;
+
+
+    public Account(long id, String name, String surname, int age) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
+    }
+
+    public Account() {
+    }
+
+    public long getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getSurname() {
+        return this.surname;
+    }
+
+    public int getAge() {
+        return this.age;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String toString() {
+        return "Account(id=" + this.getId() + ", name=" + this.getName() + ", surname=" + this.getSurname() + ", age=" + this.getAge() + ")";
+    }
 }
