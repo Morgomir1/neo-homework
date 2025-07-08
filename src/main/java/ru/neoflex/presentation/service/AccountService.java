@@ -8,6 +8,8 @@ import ru.neoflex.presentation.mapper.AccountMapper;
 import ru.neoflex.presentation.model.Account;
 import ru.neoflex.presentation.repository.AccountRepository;
 
+import java.util.List;
+
 @Service
 public class AccountService {
 
@@ -30,6 +32,11 @@ public class AccountService {
         Account account = accountRepository.findById(accountId).orElseThrow(EntityNotFoundException::new);
 
         return accountMapper.toDto(account);
+    }
+
+    public List<AccountDto> getAccounts() {
+        List<Account> accounts = accountRepository.findAll();
+        return accounts.stream().map((accountMapper::toDto)).toList();
     }
 
     public void deleteUser(long accountId) {

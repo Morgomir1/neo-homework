@@ -13,6 +13,8 @@ import ru.neoflex.presentation.dto.AccountDto;
 import ru.neoflex.presentation.dto.CreateAccountRequest;
 import ru.neoflex.presentation.service.AccountService;
 
+import java.util.List;
+
 @Validated
 @RestController
 @RequestMapping("/v1/user")
@@ -33,6 +35,11 @@ public class AccountController {
     @GetMapping("/{accountId}")
     public AccountDto getAccount(@PathVariable("accountId") long accountId) {
         return accountService.getUser(accountId);
+    }
+
+    @GetMapping
+    public List<AccountDto> getAccounts() {
+        return accountService.getAccounts();
     }
 
     @DeleteMapping("/{accountId}")
