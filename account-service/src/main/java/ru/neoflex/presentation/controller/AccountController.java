@@ -20,7 +20,7 @@ import java.util.List;
 @RequestMapping("/v1/user")
 public class AccountController {
 
-    private final AccountService accountService;
+    public final AccountService accountService;
 
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
